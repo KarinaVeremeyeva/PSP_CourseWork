@@ -10,11 +10,22 @@ using Game.Services;
 using System.Threading.Tasks;
 using System.Threading;
 using Game.Models.Areas;
+using System.Net.Sockets;
+using System.Text;
+using System.Net;
+using Newtonsoft.Json;
+using System.Linq;
 
 namespace Game
 {
     public partial class Form1 : Form
     {
+        private const int port = 8080;
+
+        private readonly GameConfig gameConfig;
+
+        private readonly string enemyServerAddres;
+
         private readonly GameRepository gameRepository;
 
         private readonly GameActionService gameActionService;
@@ -23,22 +34,29 @@ namespace Game
 
         private bool isGameEnd = false;
 
-        public Form1()
+        public Form1(int applicationId)
         {
+            this.gameConfig = GameConfig.Configs[applicationId];
+            this.enemyServerAddres = applicationId == 1
+                ? GameConfig.Configs[2].ServerAdress
+                : GameConfig.Configs[1].ServerAdress;
+
             // Создание сервисов и репозиториев
             gameRepository = ComponentsFactory.CreateGameRepository();
-
             gameActionService = ServiceFactory.CreateGameActionService();
 
             CreateAreas();
-
             CreatePlayers();
-
             CreateWalls();
 
             drawingService = ServiceFactory.CreateDrawingService();
 
             InitializeComponent();
+
+            Task.Run(() =>
+            {
+                RunServer();
+            });
 
             Task.Run(() =>
             {
@@ -51,6 +69,73 @@ namespace Game
             });
         }
 
+        /// <summary>
+        /// Прослушивает все подключения по порту
+        /// </summary>
+        public void RunServer()
+        {
+            TcpListener server = null;
+            try
+            {
+                IPAddress localAddr = IPAddress.Parse(this.gameConfig.ServerAdress);
+                server = new TcpListener(localAddr, port);
+                // запуск слушателя
+                server.Start();
+
+                while (true)
+                {
+                    byte[] data = new byte[1024];
+
+                    // получаем входящее подключение
+                    TcpClient client = server.AcceptTcpClient();
+
+                    // получаем сетевой поток для чтения и записи
+                    NetworkStream stream = client.GetStream();
+
+                    // получение данных
+                    int bytes = stream.Read(data, 0, data.Length);
+                    var responseData = Encoding.UTF8.GetString(data, 0, bytes).ToString();
+                    var deserializedKey = JsonConvert.DeserializeObject<Keys>(responseData);
+
+                    gameActionService.ProcessPlayerAction(deserializedKey);
+
+                    // закрываем поток
+                    stream.Close();
+                    // закрываем подключение
+                    client.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                if (server != null)
+                    server.Stop();
+            }
+        }
+
+        /// <summary>
+        /// Обработка запросов клиента
+        /// </summary>
+        public void SendKeyToOpponent(Keys key)
+        {
+            TcpClient client = new TcpClient();
+            client.Connect(this.enemyServerAddres, port);
+
+            NetworkStream stream = client.GetStream();
+
+            var keyToString = JsonConvert.SerializeObject(key);
+            var data = Encoding.UTF8.GetBytes(keyToString);
+
+            stream.Write(data, 0, data.Length);
+
+            // Закрываем потоки
+            stream.Close();
+            client.Close();
+        }
+
         private void CreateAreas()
         {
             gameRepository.GameAreas.Add(new NotFireArea(new Vector2(0, 2)));
@@ -60,14 +145,8 @@ namespace Game
 
         private void CreatePlayers()
         {
-            gameRepository.Player1 = GameObjectFactory.CreatePlayer(
-                new Vector4(1.0f, 1.0f, 0.0f, 1.0f),
-                new Vector2(2, 0.5f),
-                ComponentsFactory.CreateControlSettings(Keys.W, Keys.S, Keys.A, Keys.D, Keys.Space, Keys.C));
-            gameRepository.Player2 = GameObjectFactory.CreatePlayer(
-                new Vector4(0.0f, 1.0f, 0.0f, 1.0f),
-                new Vector2(-2, 0.5f),
-                ComponentsFactory.CreateControlSettings(Keys.NumPad8, Keys.NumPad2, Keys.NumPad4, Keys.NumPad6, Keys.NumPad0, Keys.NumPad1));
+            gameRepository.Player1 = GameConfig.Configs[1].Player;
+            gameRepository.Player2 = GameConfig.Configs[2].Player;
         }
 
         private void CreateWalls()
@@ -192,8 +271,26 @@ namespace Game
 
         private void GlControl1_KeyDown(object sender, KeyEventArgs e)
         {
+            // Проверка, чтобы не было введено запрещённых действий, например, движение другого игрока
+            var currentPlayerControl = this.gameConfig.Player.Control;
+            var currentPlayerActions = new Keys[]
+            {
+                currentPlayerControl.Down,
+                currentPlayerControl.Up,
+                currentPlayerControl.Left,
+                currentPlayerControl.Right,
+                currentPlayerControl.Fire,
+                currentPlayerControl.FireMiniGun,
+            };
+            var isKeyValidForThisApplication = currentPlayerActions.Contains(e.KeyCode);
+            if (!isKeyValidForThisApplication)
+            {
+                return;
+            }
+
             // Обработка ввода
             gameActionService.ProcessPlayerAction(e.KeyCode);
+            SendKeyToOpponent(e.KeyCode);
             glControl1.Invalidate();
         }
     }

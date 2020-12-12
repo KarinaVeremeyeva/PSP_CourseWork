@@ -6,12 +6,12 @@ using Game.Models.Base;
 namespace Game.Services
 {
     /// <summary>
-    /// класс сервиса отриска
+    /// Класс сервис отрисовки игровых объектов
     /// </summary>
     public class DrawingService
     {
         /// <summary>
-        /// рисование игрового объекта
+        /// Отрисовка игрового объекта
         /// </summary>
         /// <param name="gameObject"></param>
         public void DrawObject(GameObject gameObject)

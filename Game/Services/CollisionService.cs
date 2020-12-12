@@ -10,7 +10,7 @@ using System.Numerics;
 namespace Game.Services
 {
     /// <summary>
-    /// класс сервиса коллизий
+    /// Класс сервиса коллизий
     /// </summary>
     public class CollisionService
     {
