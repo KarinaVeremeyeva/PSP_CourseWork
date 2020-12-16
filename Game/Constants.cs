@@ -1,7 +1,7 @@
 ﻿namespace Game
 {
     /// <summary>
-    /// класс, хранящий константы
+    /// Класс, хранящий константы
     /// </summary>
     public static class Constants
     {

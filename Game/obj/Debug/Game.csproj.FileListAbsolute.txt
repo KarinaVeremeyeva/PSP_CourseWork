@@ -1,0 +1,80 @@
+D:\ПСП\PSP_CourseWork\Game\bin\Debug\Game.exe.config
+D:\ПСП\PSP_CourseWork\Game\bin\Debug\Game.exe
+D:\ПСП\PSP_CourseWork\Game\bin\Debug\Game.pdb
+D:\ПСП\PSP_CourseWork\Game\bin\Debug\OpenTK.dll
+D:\ПСП\PSP_CourseWork\Game\bin\Debug\OpenTK.GLControl.dll
+D:\ПСП\PSP_CourseWork\Game\bin\Debug\System.ValueTuple.dll
+D:\ПСП\PSP_CourseWork\Game\bin\Debug\OpenTK.pdb
+D:\ПСП\PSP_CourseWork\Game\bin\Debug\OpenTK.xml
+D:\ПСП\PSP_CourseWork\Game\bin\Debug\OpenTK.dll.config
+D:\ПСП\PSP_CourseWork\Game\bin\Debug\OpenTK.GLControl.xml
+D:\ПСП\PSP_CourseWork\Game\bin\Debug\System.ValueTuple.xml
+D:\ПСП\PSP_CourseWork\Game\obj\Debug\Game.csprojAssemblyReference.cache
+D:\ПСП\PSP_CourseWork\Game\obj\Debug\Game.Form1.resources
+D:\ПСП\PSP_CourseWork\Game\obj\Debug\Game.Properties.Resources.resources
+D:\ПСП\PSP_CourseWork\Game\obj\Debug\Game.csproj.GenerateResource.cache
+D:\ПСП\PSP_CourseWork\Game\obj\Debug\Game.csproj.CoreCompileInputs.cache
+D:\ПСП\PSP_CourseWork\Game\obj\Debug\Game.csproj.CopyComplete
+D:\ПСП\PSP_CourseWork\Game\obj\Debug\Game.exe
+D:\ПСП\PSP_CourseWork\Game\obj\Debug\Game.pdb
+D:\ПСП\ПСП_курсовой проект\Проект\Game\bin\Debug\Game.exe.config
+D:\ПСП\ПСП_курсовой проект\Проект\Game\bin\Debug\Game.exe
+D:\ПСП\ПСП_курсовой проект\Проект\Game\bin\Debug\Game.pdb
+D:\ПСП\ПСП_курсовой проект\Проект\Game\bin\Debug\OpenTK.dll
+D:\ПСП\ПСП_курсовой проект\Проект\Game\bin\Debug\OpenTK.GLControl.dll
+D:\ПСП\ПСП_курсовой проект\Проект\Game\bin\Debug\System.ValueTuple.dll
+D:\ПСП\ПСП_курсовой проект\Проект\Game\bin\Debug\OpenTK.pdb
+D:\ПСП\ПСП_курсовой проект\Проект\Game\bin\Debug\OpenTK.xml
+D:\ПСП\ПСП_курсовой проект\Проект\Game\bin\Debug\OpenTK.dll.config
+D:\ПСП\ПСП_курсовой проект\Проект\Game\bin\Debug\OpenTK.GLControl.xml
+D:\ПСП\ПСП_курсовой проект\Проект\Game\bin\Debug\System.ValueTuple.xml
+D:\ПСП\ПСП_курсовой проект\Проект\Game\obj\Debug\Game.csprojAssemblyReference.cache
+D:\ПСП\ПСП_курсовой проект\Проект\Game\obj\Debug\Game.Form1.resources
+D:\ПСП\ПСП_курсовой проект\Проект\Game\obj\Debug\Game.Properties.Resources.resources
+D:\ПСП\ПСП_курсовой проект\Проект\Game\obj\Debug\Game.csproj.GenerateResource.cache
+D:\ПСП\ПСП_курсовой проект\Проект\Game\obj\Debug\Game.csproj.CoreCompileInputs.cache
+D:\ПСП\ПСП_курсовой проект\Проект\Game\obj\Debug\Game.csproj.CopyComplete
+D:\ПСП\ПСП_курсовой проект\Проект\Game\obj\Debug\Game.exe
+D:\ПСП\ПСП_курсовой проект\Проект\Game\obj\Debug\Game.pdb
+D:\ПСП\ПСП_курсовой проект\Проект\Game\bin\Debug\Newtonsoft.Json.dll
+D:\ПСП\ПСП_курсовой проект\Проект\Game\bin\Debug\Newtonsoft.Json.xml
+D:\ПСП Курсовой проект\Проект\Game\bin\Debug\Game.exe.config
+D:\ПСП Курсовой проект\Проект\Game\bin\Debug\Game.exe
+D:\ПСП Курсовой проект\Проект\Game\bin\Debug\Game.pdb
+D:\ПСП Курсовой проект\Проект\Game\bin\Debug\Newtonsoft.Json.dll
+D:\ПСП Курсовой проект\Проект\Game\bin\Debug\System.ValueTuple.dll
+D:\ПСП Курсовой проект\Проект\Game\bin\Debug\Newtonsoft.Json.xml
+D:\ПСП Курсовой проект\Проект\Game\bin\Debug\OpenTK.pdb
+D:\ПСП Курсовой проект\Проект\Game\bin\Debug\OpenTK.xml
+D:\ПСП Курсовой проект\Проект\Game\bin\Debug\OpenTK.dll.config
+D:\ПСП Курсовой проект\Проект\Game\bin\Debug\OpenTK.GLControl.xml
+D:\ПСП Курсовой проект\Проект\Game\bin\Debug\System.ValueTuple.xml
+D:\ПСП Курсовой проект\Проект\Game\obj\Debug\Game.csprojAssemblyReference.cache
+D:\ПСП Курсовой проект\Проект\Game\obj\Debug\Game.Form1.resources
+D:\ПСП Курсовой проект\Проект\Game\obj\Debug\Game.Properties.Resources.resources
+D:\ПСП Курсовой проект\Проект\Game\obj\Debug\Game.csproj.GenerateResource.cache
+D:\ПСП Курсовой проект\Проект\Game\obj\Debug\Game.csproj.CoreCompileInputs.cache
+D:\ПСП Курсовой проект\Проект\Game\obj\Debug\Game.csproj.CopyComplete
+D:\ПСП Курсовой проект\Проект\Game\obj\Debug\Game.exe
+D:\ПСП Курсовой проект\Проект\Game\obj\Debug\Game.pdb
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\bin\Debug\Game.exe.config
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\bin\Debug\Game.exe
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\bin\Debug\Game.pdb
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\bin\Debug\Newtonsoft.Json.dll
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\bin\Debug\OpenTK.dll
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\bin\Debug\OpenTK.GLControl.dll
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\bin\Debug\System.ValueTuple.dll
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\bin\Debug\Newtonsoft.Json.xml
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\bin\Debug\OpenTK.pdb
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\bin\Debug\OpenTK.xml
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\bin\Debug\OpenTK.dll.config
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\bin\Debug\OpenTK.GLControl.xml
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\bin\Debug\System.ValueTuple.xml
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\obj\Debug\Game.csprojAssemblyReference.cache
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\obj\Debug\Game.Form1.resources
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\obj\Debug\Game.Properties.Resources.resources
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\obj\Debug\Game.csproj.GenerateResource.cache
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\obj\Debug\Game.csproj.CoreCompileInputs.cache
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\obj\Debug\Game.csproj.CopyComplete
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\obj\Debug\Game.exe
+C:\Users\User1\Desktop\ПСП Курсовой проект\ПСП Курсовой проект\Проект\Game\obj\Debug\Game.pdb

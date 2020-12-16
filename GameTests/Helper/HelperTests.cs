@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using GameHelper = Game.Helpers.Helper;
+using GameHelper = Game.Helper.Helper;
 using Game.Models;
 using Game.Models.ModelComponents;
 using System.Windows.Forms;

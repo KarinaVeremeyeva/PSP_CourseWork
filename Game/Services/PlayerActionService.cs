@@ -4,10 +4,15 @@ using System.Windows.Forms;
 namespace Game.Services
 {
     /// <summary>
-    /// класс действий игрока
+    /// Класс действий игрока
     /// </summary>
     public class PlayerActionService
     {
+        /// <summary>
+        /// Движение игрока
+        /// </summary>
+        /// <param name="player">игрок</param>
+        /// <param name="key">клавиша</param>
         public void ProcessPlayerMoving(Player player, Keys key)
         {
             if (key == player.Control.Up)

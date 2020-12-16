@@ -1,5 +1,4 @@
-﻿using Game.Helpers;
-using Game.Models;
+﻿using Game.Models;
 using Game.Models.Areas;
 using Game.Models.Decorators;
 using Game.Models.ModelComponents;
@@ -27,7 +26,7 @@ namespace Game.Factory
         // созадние пуль
         public static GunBullet CreateGunBullet(Player player)
         {
-            var (directionX, directionY) = Helper.GetObjectDirections(player);
+            var (directionX, directionY) = Helper.Helper.GetObjectDirections(player);
 
             return new GunBullet(
                 new Vector2(
@@ -42,7 +41,7 @@ namespace Game.Factory
         {
             var collisionService = ServiceFactory.CreateCollisionService();
 
-            var (directionX, directionY) = Helper.GetObjectDirections(player);
+            var (directionX, directionY) = Helper.Helper.GetObjectDirections(player);
 
             var nearestObject = collisionService.GetNearestObjectInPath(player);
 

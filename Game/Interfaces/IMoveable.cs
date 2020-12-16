@@ -2,6 +2,9 @@
 
 namespace Game.Interfaces
 {
+    /// <summary>
+    /// Интерфейс, содержащий методы поведения движущихся объектов
+    /// </summary>
     public interface IMoveable
     {
         float Speed { get; set; }

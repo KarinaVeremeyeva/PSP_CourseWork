@@ -1,5 +1,4 @@
-﻿using Game.Helpers;
-using Game.Models;
+﻿using Game.Models;
 using Game.Models.Areas;
 using Game.Models.Base;
 using Game.Models.Decorators;
@@ -10,7 +9,7 @@ using System.Numerics;
 namespace Game.Services
 {
     /// <summary>
-    /// класс сервиса коллизий
+    /// Класс сервиса коллизий
     /// </summary>
     public class CollisionService
     {
@@ -131,7 +130,7 @@ namespace Game.Services
 
         public GamePhysicalObject GetNearestObjectInPath(MovableGameObject movableObject)
         {
-            var (directionX, directionY) = Helper.GetObjectDirections(movableObject);
+            var (directionX, directionY) = Helper.Helper.GetObjectDirections(movableObject);
 
             return GetNearestObjectInPath(movableObject, directionX, directionY);
         }

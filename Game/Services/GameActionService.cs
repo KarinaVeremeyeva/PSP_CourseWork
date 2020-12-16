@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace Game.Services
 {
     /// <summary>
-    /// класс сервиса действий игры
+    /// Класс сервиса действий игры
     /// </summary>
     public class GameActionService
     {

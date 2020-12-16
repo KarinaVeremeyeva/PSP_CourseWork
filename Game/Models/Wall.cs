@@ -4,7 +4,7 @@ using System.Numerics;
 namespace Game.Models
 {
     /// <summary>
-    /// класс стена, конструктор которого содержит позицию, размер, броню
+    /// Класс стена, конструктор которого содержит позицию, размер, броню
     /// </summary>
     public class Wall : NotMovableGameObject
     {

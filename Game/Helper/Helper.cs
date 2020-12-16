@@ -1,7 +1,7 @@
 ﻿using Game.Models.Base;
 using System;
 
-namespace Game.Helpers
+namespace Game.Helper
 {
     /// <summary>
     /// Класс для определения направления объекта

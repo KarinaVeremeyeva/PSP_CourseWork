@@ -1,0 +1,2 @@
+﻿  WinSockServer.cpp
+D:\ПСП Курсовой проект\Проект\WinSockServer\WinSockServer\WinSockServer.cpp(41,31): error C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
