@@ -78,7 +78,7 @@ namespace Game
         {
             while (true)
             {
-                IntPtr ptrRes = DLLImporter.createAndListenSocket("", (ushort)this.gameConfig.Port);
+                IntPtr ptrRes = DLLImporter.createAndListenSocket(this.gameConfig.ServerAdress, (ushort)this.gameConfig.Port);
                 var responseData = Marshal.PtrToStringAnsi(ptrRes);
                 var deserializedKey = JsonConvert.DeserializeObject<Keys>(responseData);
                 gameActionService.ProcessPlayerAction(deserializedKey);
@@ -87,7 +87,7 @@ namespace Game
 
         public void SendMessageToCPP(Keys key)
         {
-            var responseData = DLLImporter.sendMessageToSocket((int)key, (ushort)this.enemyServerPort);
+            var responseData = DLLImporter.sendMessageToSocket((int)key, (ushort)this.enemyServerPort, this.enemyServerAddres);
         }
 
         /// <summary>

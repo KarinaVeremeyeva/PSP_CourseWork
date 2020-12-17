@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTests", "GameTests\Game
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WSDll", "WSDll\WSDll.vcxproj", "{0EBE4AC8-B5A6-4795-841C-8DDF996F7322}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinSockServer", "WinSockServer\WinSockServer.vcxproj", "{A3402FC4-0196-4A13-9524-6C79A9909984}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,16 +53,6 @@ Global
 		{0EBE4AC8-B5A6-4795-841C-8DDF996F7322}.Release|x64.Build.0 = Release|x64
 		{0EBE4AC8-B5A6-4795-841C-8DDF996F7322}.Release|x86.ActiveCfg = Release|Win32
 		{0EBE4AC8-B5A6-4795-841C-8DDF996F7322}.Release|x86.Build.0 = Release|Win32
-		{A3402FC4-0196-4A13-9524-6C79A9909984}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{A3402FC4-0196-4A13-9524-6C79A9909984}.Debug|x64.ActiveCfg = Debug|x64
-		{A3402FC4-0196-4A13-9524-6C79A9909984}.Debug|x64.Build.0 = Debug|x64
-		{A3402FC4-0196-4A13-9524-6C79A9909984}.Debug|x86.ActiveCfg = Debug|Win32
-		{A3402FC4-0196-4A13-9524-6C79A9909984}.Debug|x86.Build.0 = Debug|Win32
-		{A3402FC4-0196-4A13-9524-6C79A9909984}.Release|Any CPU.ActiveCfg = Release|Win32
-		{A3402FC4-0196-4A13-9524-6C79A9909984}.Release|x64.ActiveCfg = Release|x64
-		{A3402FC4-0196-4A13-9524-6C79A9909984}.Release|x64.Build.0 = Release|x64
-		{A3402FC4-0196-4A13-9524-6C79A9909984}.Release|x86.ActiveCfg = Release|Win32
-		{A3402FC4-0196-4A13-9524-6C79A9909984}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

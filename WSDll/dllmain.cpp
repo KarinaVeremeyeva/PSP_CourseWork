@@ -3,6 +3,8 @@
 
 #include "pch.h"
 #include "WSDll.h"
+#include <exception>
+
 #undef UNICODE
 
 #define WIN32_LEAN_AND_MEAN
@@ -15,11 +17,9 @@
 #include <sstream>
 #include <fstream>
 
-// Need to link with Ws2_32.lib
 #pragma comment (lib, "Ws2_32.lib")
 
 #define DEFAULT_BUFLEN 512
-char SERVERADDR[15];
 
 BOOL APIENTRY DllMain( HMODULE hModule,
                        DWORD  ul_reason_for_call,
@@ -38,21 +38,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 }
 
 
-__declspec(dllexport) char* createAndListenSocket(char * _, u_short port) {
-    
-    // Чтенние ip из файла
-    std::string line;
-    std::ifstream in("D:\\ipaddress.txt");
-
-    if (in.is_open())
-    {
-        while (getline(in, line))
-        {
-            std::cout << line << std::endl;
-        }
-    }
-    in.close();
-
+__declspec(dllexport) char* createAndListenSocket(char * serverAddr, u_short port) {
     // Инициализация Winsock
     WSADATA wsaData;
     int iResult = 0;
@@ -75,39 +61,14 @@ __declspec(dllexport) char* createAndListenSocket(char * _, u_short port) {
     // Структура sockaddr_in указывает семейство IP адреса,
     // IP адресс и порт для привязанного сокета.
     service.sin_family = AF_INET;
-    //service.sin_addr.s_addr = inet_addr("192.168.100.7");
+    service.sin_addr.s_addr = inet_addr(serverAddr);
     service.sin_port = htons(port);
 
-    //=================
-    // преобразование IP адреса из символьного в сетевой формат
-    HOSTENT* hst;
-    if (inet_addr(SERVERADDR) != INADDR_NONE)
-        service.sin_addr.s_addr = inet_addr(SERVERADDR);
-    else
-    {
-        // попытка получить IP адрес по доменному имени сервера
-        if (hst = gethostbyname(SERVERADDR))
-            // hst>h_addr_list содержит не массив адресов, а массив указателей на адреса
-            ((unsigned long*)&service.sin_addr)[0] =
-            ((unsigned long**)hst->h_addr_list)[0][0];
-        else
-        {
-            //printf("Invalid address %s\n", SERVERADDR);
-            closesocket(ListenSocket);
-            WSACleanup();
-            throw L"Invalid address %s\n", SERVERADDR + WSAGetLastError();;
-        }
-    }
-    //=================
     iResult = bind(ListenSocket, (SOCKADDR*)&service, sizeof(service));
     if (iResult == SOCKET_ERROR) {
         iResult = closesocket(ListenSocket);
         WSACleanup();
-        
-        char res[10] = "";
-        _itoa_s(WSAGetLastError(), res, 10);
-
-        return res;
+        throw L"closesocket function failed with error " + WSAGetLastError();
     }
 
     // Слушаем входящие запросы на соединение на созданном сокете
@@ -116,7 +77,7 @@ __declspec(dllexport) char* createAndListenSocket(char * _, u_short port) {
 
     wprintf(L"Listening on socket...\n");
 
-    // Получение данных от клиента from
+    // Получение данных от клиента
     SOCKET ClientSocket = INVALID_SOCKET;
     // Принимаем клиентский сокет
     ClientSocket = accept(ListenSocket, NULL, NULL);
@@ -147,9 +108,7 @@ __declspec(dllexport) char* createAndListenSocket(char * _, u_short port) {
     return recvbuf;
 }
 
-__declspec(dllexport) int sendMessageToSocket(int key, u_short port) {
-    char serverAddress[] = "127.0.0.1";
-
+__declspec(dllexport) int sendMessageToSocket(int key, u_short port, char * serverAddr) {
     WSADATA wsaData;
     SOCKET ConnectSocket = INVALID_SOCKET;
     struct addrinfo* result = NULL,
@@ -163,7 +122,6 @@ __declspec(dllexport) int sendMessageToSocket(int key, u_short port) {
     char portbuf[5] = "";
     _itoa_s(port, portbuf, 10);
 
-
     // Инициализация Winsock
     iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
     if (iResult != 0) {
@@ -175,17 +133,17 @@ __declspec(dllexport) int sendMessageToSocket(int key, u_short port) {
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_protocol = IPPROTO_TCP;
 
-    // Resolve the server address and port
-    iResult = getaddrinfo(serverAddress, portbuf, &hints, &result);
+    // Получить адрес и порт сервера
+    iResult = getaddrinfo(serverAddr, portbuf, &hints, &result);
     if (iResult != 0) {
         WSACleanup();
         throw "getaddrinfo failed with error";
     }
 
-    // Attempt to connect to an address until one succeeds
+    // Попытка подключиться к адресу, пока не удастся
     for (ptr = result; ptr != NULL; ptr = ptr->ai_next) {
 
-        // Создание сокета для подключения к серверу
+        // Создаем сокет для подключения к серверу
         ConnectSocket = socket(ptr->ai_family, ptr->ai_socktype,
             ptr->ai_protocol);
         if (ConnectSocket == INVALID_SOCKET) {
@@ -193,7 +151,7 @@ __declspec(dllexport) int sendMessageToSocket(int key, u_short port) {
             throw "socket failed with error";
         }
 
-        // Connect to server.
+        //Подключаемся к серверу
         iResult = connect(ConnectSocket, ptr->ai_addr, (int)ptr->ai_addrlen);
         if (iResult == SOCKET_ERROR) {
             closesocket(ConnectSocket);
@@ -210,7 +168,7 @@ __declspec(dllexport) int sendMessageToSocket(int key, u_short port) {
         throw "Unable to connect to server!\n";
     }
 
-    // Send an initial buffer
+    // Отправляем начальный буфер
     iResult = send(ConnectSocket, sendbuf, 4, 0);
     if (iResult == SOCKET_ERROR) {
         closesocket(ConnectSocket);
@@ -220,7 +178,7 @@ __declspec(dllexport) int sendMessageToSocket(int key, u_short port) {
 
     printf("Bytes Sent: %ld\n", iResult);
 
-    // shutdown the connection since no more data will be sent
+    // Отключаем соединение, так как данные больше не будут отправляться
     iResult = shutdown(ConnectSocket, SD_SEND);
     if (iResult == SOCKET_ERROR) {
         closesocket(ConnectSocket);
@@ -228,10 +186,9 @@ __declspec(dllexport) int sendMessageToSocket(int key, u_short port) {
         throw "shutdown failed with error";
     }
 
-    // cleanup
+    // Закрытие сокета
     closesocket(ConnectSocket);
     WSACleanup();
 
     return key;
 }
-

@@ -7,4 +7,4 @@
 
 extern "C" WINSOCKLIBRARY_API char* createAndListenSocket(char* serverAddress, u_short port);
 
-extern "C" WINSOCKLIBRARY_API int sendMessageToSocket(int key, u_short port);
+extern "C" WINSOCKLIBRARY_API int sendMessageToSocket(int key, u_short port, char* serverAddress);
